@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body } from '@nestjs/common';
+import { Body, Controller, Post } from '@nestjs/common';
 
+import { CreateNotificationDto } from './dto/CreateNotification.dto';
 import { NotificationsService } from './notifications.service';
-import { CreateNotificationDto } from './dto/CreateNotificationDto';
 
 @Controller('notifications')
 export class NotificationsController {
@@ -11,13 +11,6 @@ export class NotificationsController {
   async createNotification(
     @Body() createNotificationDto: CreateNotificationDto,
   ) {
-    return await this.notificationsService.createNotification(
-      createNotificationDto,
-    );
-  }
-
-  @Get()
-  async getNotifications() {
-    return await this.notificationsService.getNotifications();
+    return this.notificationsService.createNotification(createNotificationDto);
   }
 }

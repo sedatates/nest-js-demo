@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@nestjs/common';
 
 import { Model } from 'mongoose';
 import { Notification } from 'src/notifications/interfaces/notification.interface';
-import { CreateNotificationDto } from './dto/CreateNotification.dto';
+import { CreateNotificationDto } from './dto/create-notification.dto';
 
 @Injectable()
 export class NotificationsService {
@@ -17,7 +17,9 @@ export class NotificationsService {
     const createdNotification = new this.notificationModel(
       createNotificationDto,
     );
-    return await createdNotification.save();
+    await createdNotification.save();
+
+    return createdNotification;
   }
 
   async getNotifications(): Promise<Notification[]> {

@@ -2,7 +2,6 @@
 
 import { Controller, Get } from '@nestjs/common';
 import { UserService } from './user.service';
-//import { User } from './user.entity';
 
 @Controller('users')
 export class UserController {
@@ -10,6 +9,6 @@ export class UserController {
 
   @Get()
   async findAll(): Promise<string> {
-    return this.userService.getHello();
+    return this.userService.getUser();
   }
 }
